@@ -118,16 +118,7 @@
                 while($mydata=mysqli_fetch_array($runquery)){
                     $tname=$mydata['Name'];
                     $troll=$mydata['Roll'];
-                    $gjava=$mydata['java'];
-                    $tjava= java($gjava);
-                    $gpython=$mydata['python'];
-                    $tpython= python($gpython);
-                    $gbangla=$mydata['bangla'];
-                    $tbangla= bangla($gbangla);
-                    $gmath=$mydata['math'];
-                    $tmath=  math($gmath);
-                    //Fail calcaulation---
-                 $gparesult=gpacal($gjava,$gpython,$gbangla,$gmath);
+                   
                     ?>
 
 
@@ -144,22 +135,33 @@
             </tr>
             <tr>
                 <th>Bangla</th>
-                <td><?php echo $tbangla ;?></td>
-                <td rowspan="4" style="text-align:center;"><?php echo $gparesult;?></td>
+                <td><?php echo grade($mydata['bangla']); ?></td>
+                <td rowspan="4" style="text-align:center;">
+                   <?php 
+                      if(cgpa_1($mydata['bangla'])==0 || cgpa_2($mydata['java'])==0 || cgpa_3($mydata['python'])==0 || cgpa_4($mydata['math'])==0){
+                          echo "Fail!!";
+
+                      }else{
+                         $avg=cgpa_1($mydata['bangla'])+cgpa_2($mydata['java']) + cgpa_3($mydata['python']) +cgpa_4($mydata['math']);
+                         echo $avg/4;
+                      }
+                   
+                   ?>
+                </td>
             </tr>
             <tr>
                 <th>Java</th>
-                <td><?php echo $tjava;?></td>
+                <td><?php echo grade($mydata['java']);?></td>
                 
             </tr>
             <tr>
                 <th>Python</th>
-                <td><?php echo $tpython ;?></td>
+                <td><?php echo grade($mydata['python']); ?></td>
                 
             </tr>
             <tr>
                 <th>Mathmatices</th>
-                <td><?php echo $tmath;?></td>
+                <td><?php echo grade($mydata['math']); ?></td>
                 
             </tr>
         </table>
@@ -177,7 +179,7 @@
 </body>
 </html>
 <?php
-function java($x){
+function grade($x){
         if($x<33){
             return  "F";
         }else if($x>=33 && $x<=39){
@@ -196,97 +198,77 @@ function java($x){
         }
 }
 
-// Python----
-function python($x){
+function cgpa_1($x){
     if($x<33){
-        return "F";
-    }else if($x>=33 && $x<=39){
-        return "D";
+        return 0;
+    }
+    if($x>=33 && $x<=39){
+        return 1;
     }else if($x>=40 && $x<=49){
-        return "C";
+        return 2;
     }else if($x>=50 && $x<=59){
-        return "B";
+        return 3;
     }else if($x>=60 && $x<=69){
-        return "A-";
-    }else if($x>=70 && $x<=79)
-    {
-        return "A";
-    }else{
-        return "A+";
+        return 3.5;
+    }else if($x>=70 && $x<=79){
+        return 4;
+    }else if($x>=80 && $x<=100){
+        return 5;
     }
 }
-// bangla-----
-function bangla($x){
+function cgpa_2($x){
     if($x<33){
-        return "F";
-    }else if($x>=33 && $x<=39){
-        return "D";
+        return 0;
+    }
+    if($x>=33 && $x<=39){
+        return 1;
     }else if($x>=40 && $x<=49){
-        return "C";
+        return 2;
     }else if($x>=50 && $x<=59){
-        return "B";
+        return 3;
     }else if($x>=60 && $x<=69){
-        return "A-";
-    }else if($x>=70 && $x<=79)
-    {
-        return "A";
-    }else{
-        return "A+";
+        return 3.5;
+    }else if($x>=70 && $x<=79){
+        return 4;
+    }else if($x>=80 && $x<=100){
+        return 5;
     }
 }
-// Math-------
-function math($x){
+function cgpa_3($x){
     if($x<33){
-        return "F";
-    }else if($x>=33 && $x<=39){
-        return "D";
+        return 0;
+    }
+    if($x>=33 && $x<=39){
+        return 1;
     }else if($x>=40 && $x<=49){
-        return "C";
+        return 2;
     }else if($x>=50 && $x<=59){
-        return "B";
+        return 3;
     }else if($x>=60 && $x<=69){
-        return "A-";
-    }else if($x>=70 && $x<=79)
-    {
-        return "A";
-    }else{
-        return "A+";
+        return 3.5;
+    }else if($x>=70 && $x<=79){
+        return 4;
+    }else if($x>=80 && $x<=100){
+        return 5;
     }
 }
-
-
-// Fail Calcaulation function
-
-function gpacal($x,$y,$z,$p){
-  $sum=0;
-    
-      if($x>=33 && $y>=33 && $z>=33 && $p>=33){     
-             
-        
-    if(($x>=33 && $x<=39) || ($y>=33 && $y<=39) || ($z>=33 && $z<=39) || ($p>=33 && $p<=39)){
-          $sum+=1.0;
-    } if(($x>=40 && $x<=49) || ($y>=40 && $y<=49) || ($z>=40 && $z<=49) || ($p>=40 && $p<=49)){
-        $sum+=2.0;
-    }if(($x>=50 && $x<=59) || ($y>=50 && $y<=59) || ($z>=50 && $z<=59) || ($p>=50 && $p<=59)){
-        $sum+=3.0;
-    }if(($x>=60 && $x<=69) || ($y>=60 && $y<=69) || ($z>=60 && $z<=69) || ($p>=60 && $p<=69)){
-        $sum+=3.50;
-    }if(($x>=70 && $x<=79) || ($y>=70 && $y<=79) || ($z>=70 && $z<=79) || ($p>=70 && $p<=79))
-    {
-        $sum+=4.0;
-
-    }if(($x>=80 && $x<=100) || ($y>=80 && $y<=100) || ($z>=80 && $z<=100) || ($p>=80 && $p<=100)){
-        $sum+=5.0;
+function cgpa_4($x){
+    if($x<33){
+        return 0;
     }
-   
-    $totalgpa=$sum/4;
-    return $totalgpa;
-      }else{
-        return "Fail!!";
-
-}
-
-      
+    if($x>=33 && $x<=39){
+        return 1;
+    }else if($x>=40 && $x<=49){
+        return 2;
+    }else if($x>=50 && $x<=59){
+        return 3;
+    }else if($x>=60 && $x<=69){
+        return 3.5;
+    }else if($x>=70 && $x<=79){
+        return 4;
+    }else if($x>=80 && $x<=100){
+        return 5;
+    }
 }
 
 ?>
