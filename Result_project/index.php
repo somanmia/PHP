@@ -100,19 +100,12 @@
   <section id="table-section">
        <div class="container">
          <?php
-         $tname="";
-         $tjava="";
-         $tpython="";
-        
-         $tmath="";
-         $troll="";
-         $gfail="";
+         $tname="";       
+         $troll="";        
          require_once('connect.php');
            if(isset($_REQUEST['result_search'])){
             $rolls=$_REQUEST['result_search'];
-
-               
-              $showquery= "SELECT * FROM `cse` WHERE Roll='$rolls'";
+              $showquery="SELECT * FROM `cse` WHERE Roll='$rolls'";
               $runquery=mysqli_query($connect,$showquery);
               if($runquery==true){
                 while($mydata=mysqli_fetch_array($runquery)){
