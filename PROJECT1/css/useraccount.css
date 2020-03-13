@@ -1,0 +1,113 @@
+body{
+ padding:0px;
+ margin:0px;
+ background:#12475f;
+ 
+}
+h3{
+margin-top:3px;
+}
+
+.main_section{
+ position:relative;
+ width:100%;
+ background:url('../images/account/1.jpg');
+ height:105vh;
+ background-size:cover;
+
+ 
+}
+.main_section:before{
+   position:absolute;
+   content:"";
+   top:0;
+   width:100%;
+   height:100%;
+   left:0;
+   background:rgba(0,0,0,.4);
+}
+form{
+ max-width:400px; 
+ font-size:20px;
+ font-weight:400;
+ font-family:sans-serif;
+ color:tomato;
+ font-size:22px;
+  margin:auto;
+ animation-name:account;
+ animation-duration:3s;
+ animation-fill-mode:forwards;
+ position:relative;
+ transition:3s;
+ animation-proferty:transform;
+}
+ @keyframes account{
+    0%{
+	   left:-1000px;
+	   
+	}
+	100%{
+	  left:0px;
+	  transform:rotateY(360deg);
+	}
+ }
+.title {
+	height: 100px;
+	width: 100%;
+	text-align: center;
+}
+.title h2{
+ color:tomato;
+ font-size:35px;
+ font-family:sans-serif;
+ font-weight:400;
+ position:relative;
+ animation-name:content;
+ animation-fill-mode:forwards;
+ animation-duration:3s;
+   margin-top:0px;
+
+}
+  @keyframes content{
+    0%{
+	  top:-50px;
+	  
+	}
+	100%{
+	 top:40px;
+	}
+  
+  }
+input[type="text"], input[type="email"], input[type="password"] {
+	display: block;
+	height: 40px;
+	border: 1px solid #fff;
+	color: #fff;
+	border-radius: 5px;
+	background: transparent;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-size: 20px;
+	padding-left: 18px;
+	width: 380px;
+}
+input[type="submit"]{
+ width:400px;
+ height:45px;
+ background:#12475f;
+ font-size:24px;
+ font-weight:400;
+ cursor:pointer;
+ color:#fff;
+ font-family:sans-serif;
+ text-align:center;
+ border-radius:5px;
+ border:1px solid #333;
+ transition:2s;
+ margin-bottom:10px;
+}
+input[type="submit"]:hover{
+background:tomato;
+
+
+}

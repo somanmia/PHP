@@ -1,0 +1,7 @@
+   $localserver="localhost";
+   $username="root";
+   $password="";
+   $dbname="domain";
+   Database Name:domain;
+   username:root;
+   password:"";
